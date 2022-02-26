@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "12"
+  - "14"
 services: mongodb  
 cache:  
   directories:
@@ -9,4 +9,10 @@ install:
   - npm install
 script:
   - npm test
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: chmod +x ./deploy.sh && ./deploy.sh
+  on:
+    branch: master
 
